@@ -1,4 +1,4 @@
-import {calendar, day} from "../../model/calander";
+import {calendar, day} from "../model/calander";
 
 class SearchTheCalendarService {
     private townCalendar: calendar.town
@@ -28,7 +28,7 @@ class SearchTheCalendarService {
         return true
     }
     search(): day.search.item[] {
-        const garbageLists = []
+        const garbageLists: any = []
         Object.keys(this.townCalendar).forEach(key => {
             const result = this.townCalendar[key].find(listDay => this.isTargetDate(listDay))
             if (result) {

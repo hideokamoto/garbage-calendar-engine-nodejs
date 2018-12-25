@@ -1,4 +1,4 @@
-import {calendar} from '../../model/calander'
+import {calendar} from '../model/calander'
 
 class Calendar implements calendar.calendarClass {
     private calendar: calendar.city

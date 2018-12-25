@@ -1,5 +1,5 @@
 // model
-import {calendar, garbage} from '../../model/calander'
+import {calendar, garbage} from '../model/calander'
 
 import GarbageDay from '../entities/Date';
 import WeekDay from '../entities/WeekDay';

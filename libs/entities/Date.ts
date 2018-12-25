@@ -1,5 +1,5 @@
-import * as moment from 'moment'
-import {week} from "../../model/week";
+import moment from 'moment'
+import {week} from "../model/week";
 // import 'moment/locale/ja';
 /**
  * Dateオブジェクトから、諸々の情報を取得する

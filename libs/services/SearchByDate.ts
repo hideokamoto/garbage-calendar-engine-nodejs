@@ -1,7 +1,7 @@
 import * as moment from 'moment'
 import 'moment/locale/ja';
 // model
-import {calendar, day} from '../../model/calander'
+import {calendar, day} from '../model/calander'
 
 
 // service

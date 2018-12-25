@@ -1,11 +1,11 @@
 import GarbageDay from "./Date";
-import {week} from "../../model/week";
+import {week} from "../model/week";
 
 class WeekDay {
     private Day: any
-    private month: week.month
-    private year: string
-    private today: string
+    private month!: week.month
+    private year!: string
+    private today!: string
     constructor (month: week.month | '' = '', year: string = '', today: string = '', Day = GarbageDay) {
         this.Day = Day
         this.setInitialProps(year, month, today)
