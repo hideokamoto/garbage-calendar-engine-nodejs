@@ -1,0 +1,40 @@
+{
+  "name": "garbage-calendar-engine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.57",
+    "@types/jest": "^23.3.10",
+    "jest": "^23.6.0",
+    "moment": "^2.22.1",
+    "power-assert": "^1.6.1",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.2"
+  },
+  "keywords": [],
+  "author": "Hidetaka Okamoto <info@wp-kyoto.net> (https://wp-kyoto.net)",
+  "license": "MIT",
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/__tests__/**/*.test.+(ts|tsx|js)"
+    ]
+  }
+}
