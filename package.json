@@ -1,6 +1,6 @@
 {
   "name": "garbage-calendar-engine",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -16,9 +16,17 @@
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hideokamoto/garbage-calendar-engine-nodejs.git"
+  },
   "keywords": [],
   "author": "Hidetaka Okamoto <info@wp-kyoto.net> (https://wp-kyoto.net)",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hideokamoto/garbage-calendar-engine-nodejs/issues"
+  },
+  "homepage": "https://github.com/hideokamoto/garbage-calendar-engine-nodejs#readme",
   "jest": {
     "moduleFileExtensions": [
       "ts",
