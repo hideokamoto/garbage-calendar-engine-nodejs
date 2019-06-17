@@ -25,9 +25,9 @@ describe('libs/services/SearchByDate.ts', () => {
         it('should throw error when given invalid city name', () => {
             assert.throws(
                 () => service.searchByDate('ほげ', new Date()),
-                {
+                JSON.stringify({
                     message: 'unsupported town: ほげ'
-                }
+                })
             )
         })
         it('should return valid garbage information', () => {

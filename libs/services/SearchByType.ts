@@ -21,10 +21,10 @@ import WeekDay from '../entities/WeekDay'
  */
 export class SearchByTypeService {
     private Calendar: Calendar.CalendarClass
-    constructor (Calendar: Calendar.CalendarClass) {
+    public constructor (Calendar: Calendar.CalendarClass) {
         this.Calendar = Calendar
     }
-    searchByTownName (townName: string, type: string, date: Date | '' = ''): Garbage.MatchedDate | Garbage.NotFound {
+    public searchByTownName (townName: string, type: string, date: Date | '' = ''): Garbage.MatchedDate | Garbage.NotFound {
         const garbage = this.Calendar.getByTownName(townName)
         if (Object.keys(garbage).length < 1 || !garbage[type]) {
             // 対象のゴミが見つからなかったケース

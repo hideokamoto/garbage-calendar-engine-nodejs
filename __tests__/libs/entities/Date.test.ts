@@ -1,5 +1,5 @@
 // target
-import * as moment from 'moment'
+import moment from 'moment'
 import assert from 'power-assert'
 import GarbageDate from '../../../libs/entities/Date'
 

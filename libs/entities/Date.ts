@@ -20,20 +20,20 @@ export class GarbageDay {
      *
      * @param {Date} [date=new Date()] date objects
      */
-    constructor (date = new Date()) {
+    public constructor (date = new Date()) {
         this.dayObj = moment(date)
     }
-    addDate (dateNumber: number, format: 'days' = 'days'): void {
+    public addDate (dateNumber: number, format: 'days' = 'days'): void {
         this.dayObj.add(dateNumber, format)
     }
 
     /**
      * Get moment object
      */
-    getMoment (): moment.Moment {
+    public getMoment (): moment.Moment {
         return this.dayObj
     }
-    isValid (): boolean {
+    public isValid (): boolean {
         return this.dayObj.isValid()
     }
     /**
@@ -44,7 +44,7 @@ export class GarbageDay {
      * c.getWeekDay()
      * '26'
      */
-    getFormattedDate (format: string = 'DD'): string {
+    public getFormattedDate (format: string = 'DD'): string {
         return this.dayObj.format(format)
     }
     /**
@@ -55,7 +55,7 @@ export class GarbageDay {
      * c.getWeekDay()
      * 'Tuesday'
      */
-    getWeekDay (): string {
+    public getWeekDay (): string {
         return this.dayObj.format('dddd')
     }
 
@@ -63,7 +63,7 @@ export class GarbageDay {
      * Get query item for WeekDay object
      * @return {Week.Search.Result}
      */
-    getWeekDayQuery (): Week.Search.Result {
+    public getWeekDayQuery (): Week.Search.Result {
         const item = {
             year: this.getFormattedDate('YYYY'),
             month: this.getFormattedDate('MM'),
@@ -80,7 +80,7 @@ export class GarbageDay {
      * c.getDayCount()
      * 4
      */
-    getDayCount (): number {
+    public getDayCount (): number {
         const day = this.dayObj.toDate()
         return Math.floor((day.getDate() - 1) / 7) + 1
     }
@@ -89,7 +89,7 @@ export class GarbageDay {
      *
      * @return {string} 第四日曜日なら四をかえす
      */
-    getTargetDayCountString (): string {
+    public getTargetDayCountString (): string {
         switch (this.getDayCount()) {
             case 1:
                 return '一'
@@ -114,7 +114,7 @@ export class GarbageDay {
      * @return {string} - Day string in English
      * @throws {Error} - If unmatched day string, throws Error object
      **/
-    getWeekDayString (lang: 'ja' | 'en' = 'ja'): string {
+    public getWeekDayString (lang: 'ja' | 'en' = 'ja'): string {
         switch (this.getWeekDay()) {
             case 'Monday':
             case '月':

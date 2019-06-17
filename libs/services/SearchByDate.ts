@@ -30,12 +30,15 @@ import GarbageDay from '../entities/Date'
  */
 export class SearchByDateService {
     private Calendar: Calendar.CalendarClass
-    constructor (
+    public constructor (
         Calendar: Calendar.CalendarClass
     ) {
         this.Calendar = Calendar
     }
-    getTargetDate (target: Date, now: Date | '') {
+    public getTargetDate (target: Date, now: Date | ''): {
+        isTomorrow: boolean;
+        targetDay: GarbageDay;
+    } {
         const targetDay = new GarbageDay(target)
         const currentDay = now ? new GarbageDay(now) : new GarbageDay()
 
@@ -55,7 +58,7 @@ export class SearchByDateService {
         }
     }
 
-    searchByDate (townName: string, target: Date, now: Date | '' = ''): Day.MatchedGarbage | Day.NotFound {
+    public searchByDate (townName: string, target: Date, now: Date | '' = ''): Day.MatchedGarbage | Day.NotFound {
         // カレンダーから対応する町を取得する
         const garbage: Calendar.Town = this.Calendar.getByTownName(townName)
         if (Object.keys(garbage).length < 1) {

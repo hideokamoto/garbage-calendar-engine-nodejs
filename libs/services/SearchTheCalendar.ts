@@ -9,7 +9,7 @@ export class SearchTheCalendarService {
      * @param targetDate- 曜日（月曜・火曜など）
      * @param weekCount - カウント (漢数字１文字。一・二など)
      */
-    constructor (townCalendar: Calendar.Town, targetDate: string, weekCount: number) {
+    public constructor (townCalendar: Calendar.Town, targetDate: string, weekCount: number) {
         this.townCalendar = townCalendar
         this.targetDate = targetDate
         this.weekCount = weekCount
@@ -19,7 +19,7 @@ export class SearchTheCalendarService {
      *
      * @return {bool} 回収日ならtrue
      */
-    isTargetDate (listDay: string): boolean {
+    public isTargetDate (listDay: string): boolean {
         const result = listDay.match(new RegExp(`${this.targetDate}$`))
         if (!result || result.length < 1) return false
         if (/^毎週/.test(listDay)) return true
@@ -27,10 +27,11 @@ export class SearchTheCalendarService {
         if (!result2 || result2.length < 1) return false
         return true
     }
-    search (): Day.Search.Item[] {
+    public search (): Day.Search.Item[] {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const garbageLists: any = []
-        Object.keys(this.townCalendar).forEach(key => {
-            const result = this.townCalendar[key].find(listDay => this.isTargetDate(listDay))
+        Object.keys(this.townCalendar).forEach((key): void => {
+            const result = this.townCalendar[key].find((listDay): boolean => this.isTargetDate(listDay))
             if (result) {
                 garbageLists.push({
                     item: key,

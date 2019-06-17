@@ -9,9 +9,9 @@ describe('libs/calendar.ts', () => {
         it('should throw error when given invalid city name', () => {
             assert.throws(
                 () => new GarbageCalendar(garbageCalendar, 'hoge'),
-                {
+                JSON.stringify({
                     message: 'Unsupported city : hoge'
-                }
+                })
             )
         })
         it('should initilize', () => {
