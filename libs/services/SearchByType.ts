@@ -19,7 +19,7 @@ import WeekDay from '../entities/WeekDay';
  *     }
  * }
  */
-class SearchByTypeService {
+export class SearchByTypeService {
     private Calendar: calendar.calendarClass
     constructor (Calendar: calendar.calendarClass) {
         this.Calendar = Calendar

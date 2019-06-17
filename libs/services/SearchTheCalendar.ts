@@ -1,6 +1,6 @@
 import {calendar, day} from "../model/calander";
 
-class SearchTheCalendarService {
+export class SearchTheCalendarService {
     private townCalendar: calendar.town
     private targetDate: string
     private weekCount: number

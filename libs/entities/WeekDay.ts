@@ -1,7 +1,7 @@
 import GarbageDay from "./Date";
 import {week} from "../model/week";
 
-class WeekDay {
+export class WeekDay {
     private Day: any
     private month!: week.month
     private year!: string
@@ -88,6 +88,7 @@ class WeekDay {
     }
     searchTheWeekDay(dayStrings: string[]): week.search.result | '' {
         const today = this.getDayObject(`${this.year}/${this.month}/${this.today}`)
+        console.log(today)
         // weekNumberを取得する
         const todayWeekNumber = today.getDayCount()
         // weekNumberとdayStringの週の差分を見る
@@ -97,6 +98,7 @@ class WeekDay {
             return this.calcWeekNumberDiff(todayWeekNumber, weekNumberString) > 0
         })
         // 差分がマイナスなら「今月の回収は終了した」と判断
+        console.log(upcomingDays)
         if (upcomingDays.length < 1) return ''
         let nextDate: week.search.result | '' = ''
        upcomingDays.some(dayString => {

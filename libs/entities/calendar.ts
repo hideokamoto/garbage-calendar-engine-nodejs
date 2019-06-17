@@ -1,6 +1,6 @@
 import {calendar} from '../model/calander'
 
-class Calendar implements calendar.calendarClass {
+export class Calendar implements calendar.calendarClass {
     private calendar: calendar.city
     constructor(calendar: calendar.all = {}, city: string) {
         if (!calendar[city]) throw new Error(`Unsupported city : ${city}`)

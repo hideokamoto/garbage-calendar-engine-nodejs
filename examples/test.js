@@ -1,6 +1,7 @@
 const {Services, Entities} = require('../dist/index')
+const moment = require('moment')
 const { Calendar } = Entities
-const { SearchByDateService } = Services
+const { SearchByDateService, SearchByTypeService} = Services
 
 const garbageCalendar = {
     '西宮市': {
@@ -41,5 +42,22 @@ const garbageCalendar = {
 
 const calendar = new Calendar(garbageCalendar, '西宮市')
 const service = new SearchByDateService(calendar)
+/*
 const data = service.searchByDate('神垣町', new Date('2018/12/25'), new Date('2018/12/24'))
 console.log(data)
+console.log(moment('2018-12-25T10:00:00.000'))
+try {
+const data1 = service.searchByDate('神垣町', moment('2018-12-25').toDate(), moment('2018-12-25T10:00:00.000').toDate())
+console.log(data1)
+} catch (e) {
+    console.log(e.message)
+}
+const data2 = service.searchByDate('神垣町', moment('2019-01-27').toDate())
+console.log(data2)
+*/
+
+const s = new SearchByTypeService(calendar)
+const data = s.searchByTownName('神垣町', 'もやすごみ',  moment().toDate())
+console.log(data)
+const data1 = s.searchByTownName('神垣町', 'もやすごみ', moment('2018-12-25T00:00:00.000').toDate())
+console.log(data1)

@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run build && node dist/test.js"
   },
   "devDependencies": {
+    "garbage-calendar-engine": "0.0.1",
+    "moment": "^2.24.0",
     "typescript": "^3.2.2"
   },
   "keywords": [],

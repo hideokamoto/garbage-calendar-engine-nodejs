@@ -1,8 +1,10 @@
 import GarbageCalendarEngine from '../../dist/index'
 
+// import GarbageCalendarEngine from 'garbage-calendar-engine'
 
-const { Calendar } = GarbageCalendarEngine.Entities
-const { SearchByDateService } = GarbageCalendarEngine.Services
+
+const { Calendar } = GarbageCalendarEngine
+const { SearchByDateService } = GarbageCalendarEngine
 
 const garbageCalendar = {
     '西宮市': {
@@ -43,5 +45,5 @@ const garbageCalendar = {
 
 const calendar = new Calendar(garbageCalendar, '西宮市')
 const service = new SearchByDateService(calendar)
-const data = service.searchByDate('神垣町', new Date('2018/12/25'), new Date('2018/12/24'))
+const data = service.searchByDate('神垣町', new Date('2019/6/17'), new Date('2019/6/17'))
 console.log(data)

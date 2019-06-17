@@ -31,7 +31,7 @@ import GarbageDay from "../entities/Date";
  *   }
  * }
  */
-class SearchByDateService {
+export class SearchByDateService {
     private Calendar: calendar.calendarClass
     constructor (
         Calendar: calendar.calendarClass,

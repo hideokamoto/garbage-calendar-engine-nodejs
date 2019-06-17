@@ -13,7 +13,7 @@ import {week} from "../model/week";
  * c.getDayCount()
  * 4
  */
-class GarbageDay {
+export class GarbageDay {
     private dayObj: moment.Moment
     /**
      * Constructor
