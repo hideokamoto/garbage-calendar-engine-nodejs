@@ -1,5 +1,5 @@
 import moment from 'moment'
-import {week} from "../model/week";
+import { Week } from '../model/week'
 // import 'moment/locale/ja';
 /**
  * Dateオブジェクトから、諸々の情報を取得する
@@ -61,15 +61,15 @@ export class GarbageDay {
 
     /**
      * Get query item for WeekDay object
-     * @return {week.search.result}
+     * @return {Week.Search.Result}
      */
-    getWeekDayQuery (): week.search.result {
+    getWeekDayQuery (): Week.Search.Result {
         const item = {
             year: this.getFormattedDate('YYYY'),
             month: this.getFormattedDate('MM'),
             day: this.getFormattedDate('DD')
         }
-        return item as week.search.result
+        return item as Week.Search.Result
     }
 
     /**

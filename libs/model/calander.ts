@@ -1,47 +1,47 @@
-import { week } from './week'
+import { Week } from './week'
 
-export namespace calendar {
-    export interface all {
-        [city: string]: city
+export namespace Calendars {
+    export interface All {
+        [city: string]: City;
     }
-    export interface city {
-        [town: string]: town
+    export interface City {
+        [town: string]: Town;
     }
-    export interface town {
-        [garbageType: string]: string[]
+    export interface Town {
+        [garbageType: string]: string[];
     }
-    export interface calendarClass {
-        getCity(): city
-        getByTownName(townName: string): town
+    export interface CalendarClass {
+        getCity(): City;
+        getByTownName(townName: string): Town;
     }
 }
 
-export namespace garbage {
-    export interface matchedDate {
-        found: true,
-        dateList: string[],
-        nextDate: week.search.result | '',
-        nextAction: 'putReminder' | 'searchOtherGarbage',
+export namespace Garbage {
+    export interface MatchedDate {
+        found: true;
+        dateList: string[];
+        nextDate: Week.Search.Result | '';
+        nextAction: 'putReminder' | 'searchOtherGarbage';
     }
-    export interface notFound {
-        found: false,
-        nextAction: 'searchOtherGarbage'
+    export interface NotFound {
+        found: false;
+        nextAction: 'searchOtherGarbage';
     }
 }
 
-export namespace day {
-    export namespace search {
-        export interface item {item: string, date: string}
+export namespace Day {
+    export namespace Search {
+        export interface Item {item: string; date: string}
     }
-    export interface matchedGarbage {
-        found: true,
-        garbageList: day.search.item[],
-        isTomorrow: boolean,
-        nextAction: 'putReminder',
-        targetDate: week.search.result | '',
+    export interface MatchedGarbage {
+        found: true;
+        garbageList: Day.Search.Item[];
+        isTomorrow: boolean;
+        nextAction: 'putReminder';
+        targetDate: Week.Search.Result | '';
     }
-    export interface notFound {
-        found: false,
-        nextAction: 'searchOtherDay'
+    export interface NotFound {
+        found: false;
+        nextAction: 'searchOtherDay';
     }
 }

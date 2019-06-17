@@ -1,8 +1,8 @@
 // model
-import {calendar, garbage} from '../model/calander'
+import { Calendars as Calendar, Garbage } from '../model/calander'
 
-import GarbageDay from '../entities/Date';
-import WeekDay from '../entities/WeekDay';
+import GarbageDay from '../entities/Date'
+import WeekDay from '../entities/WeekDay'
 
 /**
  * @example
@@ -20,11 +20,11 @@ import WeekDay from '../entities/WeekDay';
  * }
  */
 export class SearchByTypeService {
-    private Calendar: calendar.calendarClass
-    constructor (Calendar: calendar.calendarClass) {
+    private Calendar: Calendar.CalendarClass
+    constructor (Calendar: Calendar.CalendarClass) {
         this.Calendar = Calendar
     }
-    searchByTownName(townName: string, type: string, date: Date | '' = ''): garbage.matchedDate | garbage.notFound {
+    searchByTownName (townName: string, type: string, date: Date | '' = ''): Garbage.MatchedDate | Garbage.NotFound {
         const garbage = this.Calendar.getByTownName(townName)
         if (Object.keys(garbage).length < 1 || !garbage[type]) {
             // 対象のゴミが見つからなかったケース
@@ -33,8 +33,8 @@ export class SearchByTypeService {
                 nextAction: 'searchOtherGarbage'
             }
         }
-        const theDay = date ? new GarbageDay(date) :  new GarbageDay()
-        const {year, day, month} = theDay.getWeekDayQuery()
+        const theDay = date ? new GarbageDay(date) : new GarbageDay()
+        const { year, day, month } = theDay.getWeekDayQuery()
 
         const dateList = garbage[type]
         const weekDay = new WeekDay(month, year, day)

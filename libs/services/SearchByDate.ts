@@ -1,10 +1,9 @@
 // model
-import {calendar, day} from '../model/calander'
-
+import { Calendars as Calendar, Day } from '../model/calander'
 
 // service
 import SearchTheCalendarService from './SearchTheCalendar'
-import GarbageDay from "../entities/Date";
+import GarbageDay from '../entities/Date'
 /**
  * @example
  * const calendar = new GarbageCalendar(garbageCalendar, '西宮市')
@@ -30,13 +29,13 @@ import GarbageDay from "../entities/Date";
  * }
  */
 export class SearchByDateService {
-    private Calendar: calendar.calendarClass
+    private Calendar: Calendar.CalendarClass
     constructor (
-        Calendar: calendar.calendarClass,
+        Calendar: Calendar.CalendarClass
     ) {
         this.Calendar = Calendar
     }
-    getTargetDate(target: Date, now: Date | '') {
+    getTargetDate (target: Date, now: Date | '') {
         const targetDay = new GarbageDay(target)
         const currentDay = now ? new GarbageDay(now) : new GarbageDay()
 
@@ -56,9 +55,9 @@ export class SearchByDateService {
         }
     }
 
-    searchByDate(townName: string, target: Date, now: Date | '' = ''): day.matchedGarbage | day.notFound {
+    searchByDate (townName: string, target: Date, now: Date | '' = ''): Day.MatchedGarbage | Day.NotFound {
         // カレンダーから対応する町を取得する
-        const garbage: calendar.town = this.Calendar.getByTownName(townName)
+        const garbage: Calendar.Town = this.Calendar.getByTownName(townName)
         if (Object.keys(garbage).length < 1) {
             // サポートしてない街の場合
             throw new Error(`unsupported town: ${townName}`)
@@ -74,7 +73,7 @@ export class SearchByDateService {
             // 該当するものがない場合
             return {
                 found: false,
-                nextAction: 'searchOtherDay',
+                nextAction: 'searchOtherDay'
             }
         }
         // 返す

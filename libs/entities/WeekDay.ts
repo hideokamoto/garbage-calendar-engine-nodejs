@@ -1,16 +1,16 @@
-import GarbageDay from "./Date";
-import {week} from "../model/week";
+import GarbageDay from './Date'
+import { Week } from '../model/week'
 
 export class WeekDay {
     private Day: any
-    private month!: week.month
+    private month!: Week.Month
     private year!: string
     private today!: string
-    constructor (month: week.month | '' = '', year: string = '', today: string = '', Day = GarbageDay) {
+    constructor (month: Week.Month | '' = '', year: string = '', today: string = '', Day = GarbageDay) {
         this.Day = Day
         this.setInitialProps(year, month, today)
     }
-    private setInitialProps (year: string, month: week.month | '', today: string) {
+    private setInitialProps (year: string, month: Week.Month | '', today: string) {
         if (year) this.year = year
         if (month) this.month = month
         if (today) this.today = today
@@ -20,7 +20,7 @@ export class WeekDay {
         if (!month) this.month = d.getFormattedDate('MM')
         if (!today) this.today = d.getFormattedDate('DD')
     }
-    convertWeekDayToNumber (weekDay: week.weekday): week.dayNumber {
+    convertWeekDayToNumber (weekDay: Week.Weekday): Week.DayNumber {
         switch (weekDay) {
             case '月曜':
                 return 1
@@ -40,7 +40,7 @@ export class WeekDay {
                 throw new Error('Invalid week day')
         }
     }
-    convertWeekNumber (weekNumberString: string): week.weeknumber {
+    convertWeekNumber (weekNumberString: string): Week.Weeknumber {
         switch (weekNumberString) {
             case '第一':
                 return 1
@@ -58,35 +58,35 @@ export class WeekDay {
                 throw new Error('Invalid week number string')
         }
     }
-    calcWeekNumberDiff(todayWeekNumber: week.weeknumber,weekNumberString: string): number {
+    calcWeekNumberDiff (todayWeekNumber: Week.Weeknumber, weekNumberString: string): number {
         if (weekNumberString === '毎週') return 1
         const weekNum = this.convertWeekNumber(weekNumberString)
         return weekNum - todayWeekNumber
     }
-    getTheFirstWeekDay (firstDay: number, weekDayNumber: week.dayNumber) {
+    getTheFirstWeekDay (firstDay: number, weekDayNumber: Week.DayNumber) {
         const day = weekDayNumber - firstDay + 1
         if (day <= 0) return day + 7
         return day
     }
-    calcDayNumber(weekNumber: week.weeknumber, weekDayNumber: week.dayNumber) {
+    calcDayNumber (weekNumber: Week.Weeknumber, weekDayNumber: Week.DayNumber) {
         const date = new Date(`${this.year}/${this.month}/1`)
         const firstDay = date.getDay()
         const firstWeekDay = this.getTheFirstWeekDay(firstDay, weekDayNumber)
         const additionalDate = 7 * (weekNumber - 1)
         return String(firstWeekDay + additionalDate)
     }
-    getTheDay(weekNumber: week.weeknumber, weekDay: week.weekday): week.search.result {
+    getTheDay (weekNumber: Week.Weeknumber, weekDay: Week.Weekday): Week.Search.Result {
         const weekDayNumber = this.convertWeekDayToNumber(weekDay)
         const day = this.calcDayNumber(weekNumber, weekDayNumber)
         const d = new this.Day(new Date(`${this.year}/${this.month}/${day}`))
         if (d.isValid()) return d.getWeekDayQuery()
         throw new Error('Invalid date')
     }
-    getDayObject(yyyymmdd: string = '') {
+    getDayObject (yyyymmdd: string = '') {
         if (!yyyymmdd) return new this.Day(new Date())
         return new this.Day(new Date(yyyymmdd))
     }
-    searchTheWeekDay(dayStrings: string[]): week.search.result | '' {
+    searchTheWeekDay (dayStrings: string[]): Week.Search.Result | '' {
         const today = this.getDayObject(`${this.year}/${this.month}/${this.today}`)
         console.log(today)
         // weekNumberを取得する
@@ -100,13 +100,13 @@ export class WeekDay {
         // 差分がマイナスなら「今月の回収は終了した」と判断
         console.log(upcomingDays)
         if (upcomingDays.length < 1) return ''
-        let nextDate: week.search.result | '' = ''
-       upcomingDays.some(dayString => {
+        let nextDate: Week.Search.Result | '' = ''
+        upcomingDays.some(dayString => {
             const weekNumberString = dayString.substr(0, 2)
             const weekDayString = dayString.substr(2)
-            const weekNumber = weekNumberString !== '毎週' ? this.convertWeekNumber(weekNumberString): todayWeekNumber
+            const weekNumber = weekNumberString !== '毎週' ? this.convertWeekNumber(weekNumberString) : todayWeekNumber
             try {
-                const day = this.getTheDay(weekNumber, weekDayString as week.weekday)
+                const day = this.getTheDay(weekNumber, weekDayString as Week.Weekday)
                 const targetObj = this.getDayObject(`${day.year}/${day.month}/${day.day}`).getMoment()
                 const todayObj = this.getDayObject(`${this.year}/${this.month}/${this.today}`).getMoment()
                 if (targetObj.diff(todayObj, 'days') < 1) return false
