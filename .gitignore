@@ -5,3 +5,5 @@ node_modules/
 .webpack/
 .idea/
 dist/
+examples/
+.rpt2_cache/
