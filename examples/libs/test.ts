@@ -1,11 +1,6 @@
-import GarbageCalendarEngine from '../../dist/index'
+//import {Calendar, SearchByDateService} from '../../dist/index'
 
-// import GarbageCalendarEngine from 'garbage-calendar-engine'
-
-
-const { Calendar } = GarbageCalendarEngine
-const { SearchByDateService } = GarbageCalendarEngine
-
+import {Calendar, SearchByDateService} from 'garbage-calendar-engine'
 const garbageCalendar = {
     '西宮市': {
         '神垣町': {

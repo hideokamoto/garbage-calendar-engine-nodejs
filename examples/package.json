@@ -8,7 +8,7 @@
     "test": "npm run build && node dist/test.js"
   },
   "devDependencies": {
-    "garbage-calendar-engine": "0.0.1",
+    "garbage-calendar-engine": "^1.0.0",
     "moment": "^2.24.0",
     "typescript": "^3.2.2"
   },
