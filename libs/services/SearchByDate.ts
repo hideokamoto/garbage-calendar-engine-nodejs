@@ -68,7 +68,7 @@ export class SearchByDateService {
         // 調べる対象の日を調べる
         const { targetDay, isTomorrow } = this.getTargetDate(target, now)
         const targetDate: string = targetDay.getWeekDayString()
-        const weekCount: number = targetDay.getDayCount()
+        const weekCount: string = targetDay.getTargetDayCountString()
         // その町の回収日を取得する
         const searchService = new SearchTheCalendarService(garbage, targetDate, weekCount)
         const result = searchService.search()

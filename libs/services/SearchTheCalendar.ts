@@ -3,13 +3,13 @@ import { Calendars as Calendar, Day } from '../model/calander'
 export class SearchTheCalendarService {
     private townCalendar: Calendar.Town
     private targetDate: string
-    private weekCount: number
+    private weekCount: string
     /**
      * @param townCalendar
      * @param targetDate- 曜日（月曜・火曜など）
      * @param weekCount - カウント (漢数字１文字。一・二など)
      */
-    public constructor (townCalendar: Calendar.Town, targetDate: string, weekCount: number) {
+    public constructor (townCalendar: Calendar.Town, targetDate: string, weekCount: string) {
         this.townCalendar = townCalendar
         this.targetDate = targetDate
         this.weekCount = weekCount
