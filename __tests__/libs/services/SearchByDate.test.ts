@@ -30,7 +30,7 @@ describe('libs/services/SearchByDate.ts', () => {
                 })
             )
         })
-        it('should return valid garbage information', () => {
+        it('should return valid garbage information (per week)', () => {
             const result = service.searchByDate('神垣町', new Date('2018/12/25'), new Date('2018/12/24'))
             assert.deepEqual(result, {
                 "found": true,
@@ -48,6 +48,28 @@ describe('libs/services/SearchByDate.ts', () => {
                     "day": "25",
                     "month": "12",
                     "year": "2018"
+                }
+            })
+        })
+        it('should return valid garbage information (not per week', () => {
+            const result = service.searchByDate('神垣町', new Date('2019/06/21'), new Date('2018/12/24'))
+            assert.deepEqual(result, {
+                "found": true,
+                "garbageList": [
+                    {
+                        "date": [
+                            "第一金曜",
+                            "第三金曜",
+                        ],
+                        "item": "ペットボトル"
+                    }
+                ],
+                "isTomorrow": false,
+                "nextAction": "putReminder",
+                "targetDate": {
+                    "day": "21",
+                    "month": "06",
+                    "year": "2019"
                 }
             })
         })
